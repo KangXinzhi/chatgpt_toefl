@@ -1,0 +1,41 @@
+.containerOut {
+  margin: 0 auto;
+  margin-bottom: 40px;
+  position: relative;
+  width: 768px;
+}
+
+.container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+  display: flex;
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 4px;
+  position: relative;
+  width: 100%;
+}
+
+
+.send{
+  background-color: #f90;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  bottom:-50px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  display: inline-block;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  position: absolute;
+  right: 0;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgb(240 196 34);
+  }
+}
