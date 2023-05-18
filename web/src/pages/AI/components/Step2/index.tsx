@@ -10,17 +10,22 @@ function TextInput() {
   return (
     <div className={styles.container}>
       <div className={styles.intro}>
-        <div>题目名称：{currentQuestion?.title}</div>
-        <div>题目类型：{(currentQuestion?.type === 'Independent' && '独立写作') || (currentQuestion?.type === 'Integrated' && '综合写作')}</div>
-        <div>题目：{currentQuestion?.question}</div>
+        <div>
+          <h3>题目名称：</h3>{currentQuestion?.title}</div>
+        <div>
+          <h3>题目类型：</h3>{(currentQuestion?.type === 'Independent' && '独立写作') || (currentQuestion?.type === 'Integrated' && '综合写作')}</div>
+        <div>
+          <h3>题目：</h3>{currentQuestion?.question}</div>
         {currentQuestion?.type === 'Independent' && (
-          <div>要求：
+          <div>
+            <h3>要求：</h3>
             <li>字数要求：通常建议在独立写作中写300字到350字左右，但没有严格的字数限制。</li>
             <li>时间限制：考生有30分钟的时间完成独立写作任务。</li>
           </div>
         )}
         {currentQuestion?.type === 'Integrated' && (
-          <div>要求：
+          <div>
+            <h3>要求：</h3>
             <li>字数要求：通常建议在综合写作中写150字到225字左右，但没有严格的字数限制。</li>
             <li>时间限制：考生有20分钟的时间阅读一篇文章，然后听取一个相关的演讲或讲座片段，最后有30分钟的时间完成综合写作任务。</li>
           </div>
@@ -36,7 +41,9 @@ function TextInput() {
             style={{ color: '#fff' }}
           />
         </div>
-        <span className={styles.send} onClick={handleSend}>开始评测</span>
+        <div className={styles.sendContainer}>
+          <span className={styles.send} onClick={handleSend}>开始评测</span>
+        </div>
       </div>
     </div>
   )

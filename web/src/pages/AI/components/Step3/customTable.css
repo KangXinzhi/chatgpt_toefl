@@ -1,0 +1,17 @@
+.customTable .ant-table-cell{
+  /* background-color: #000 !important;  */
+  background-color: transparent;
+  color: #fff !important;
+}
+
+.customTable .ant-table{
+  background-color: transparent !important;
+}
+
+.customTable .ant-table td{
+  background-color: transparent !important;
+}
+
+.customTable .ant-table-thead>tr>th{
+  background-color: transparent !important;
+}

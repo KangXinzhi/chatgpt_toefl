@@ -30,12 +30,13 @@ function ContentProvider({ children }: Props) {
   const [inputMessage, setInputMessage] = useState('')
   const [outputMessage, setOutputMessage] = useState('')
   const [msg, setMsg] = useState('')
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(0)
   const [currentQuestion, setCurrentQuestion] = useState <IQuestion> ()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSend = () => {
-    setIsLoading(true)
+    setStep(2)
+    // setIsLoading(true)
     const temp = msg
     setInputMessage(JSON.stringify(msg))
     // setMsg('')
