@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { extractOuterObject } from './utils'
 
 interface Props {
   children: React.ReactNode
@@ -35,17 +36,13 @@ function ContentProvider({ children }: Props) {
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSend = () => {
-    setStep(2)
-    // setIsLoading(true)
-    const temp = msg
-    setInputMessage(JSON.stringify(msg))
-    // setMsg('')
+    setIsLoading(true)
 
     // 将api_url替换为你的API接口地址
-    const api_url = 'http://127.0.0.1:8000/chat'
+    const api_url = 'http://127.0.0.1:8002/chat'
 
-    const testData = { prompt: temp }
-    // 发送POST请求
+    const testData = { topic: currentQuestion?.question, answer: msg }
+    // // 发送POST请求
     fetch(api_url, {
       method: 'POST',
       headers: {
@@ -57,11 +54,13 @@ function ContentProvider({ children }: Props) {
       .then((data) => {
         setIsLoading(false)
         // 处理响应数据
-        console.log(data)
-        setOutputMessage(JSON.stringify(data.text))
+        console.log(data.text)
+        setOutputMessage(extractOuterObject(data.text))
+
+        setStep(2)
       })
       .catch((error) => {
-        // setIsLoading(false)
+        setIsLoading(false)
         console.error(error)
       })
   }
