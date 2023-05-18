@@ -7,11 +7,28 @@
 } */
 
 body{
-  background-color: #161627 !important;
+  background-color: #000 !important;
   margin: 0;
   padding: 0;
 }
 
 .ant-steps-item-title{
   color: #fff !important;
+}
+
+.ant-steps .ant-steps-item-wait .ant-steps-item-icon >.ant-steps-icon{
+  color: #ddd !important;
+}
+
+:where(.css-dev-only-do-not-override-ed5zg0).ant-steps .ant-steps-item-wait .ant-steps-item-icon{
+  background-color: #153a7f;
+}
+
+.ant-spin-text{
+  color: #fff !important;
+  font-size: 20px !important;
+}
+
+.ant-spin-dot-item{
+  background-color: #fff !important;
 }

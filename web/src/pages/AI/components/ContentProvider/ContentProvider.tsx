@@ -3,57 +3,47 @@ import React, { useState } from 'react'
 interface Props {
   children: React.ReactNode
 }
-
+interface IQuestion {
+  id: number
+  question: string
+  title: string
+  type: string
+}
 export interface Context {
-  isAudioModalOpen: boolean
   inputMessage: string
   setInputMessage: (inputMessage: string) => void
   outputMessage: string
   setOutputMessage: (outputMessage: string) => void
   msg: string
-  openModel1: boolean
   setMsg: (msg: string) => void
-  handleMouseDown: () => void
-  handleMouseUp: () => void
-  handleCancelAudioModal: () => void
-  handleOpenAudioModal: () => void
+  step: number
+  setStep: (step: number) => void
   handleSend: () => void
+  currentQuestion: IQuestion | undefined
+  handleStep2: (item?: IQuestion) => void
+  isLoading: boolean
 }
 
 export const ContentContext = React.createContext<Context>({} as Context)
 
 function ContentProvider({ children }: Props) {
-  const [isAudioModalOpen, setAudioModalIsOpen] = useState(false)
   const [inputMessage, setInputMessage] = useState('')
   const [outputMessage, setOutputMessage] = useState('')
   const [msg, setMsg] = useState('')
-  const [openModel1, setOpenModel1] = useState(false)
-
-  const handleCancelAudioModal = () => {
-    setAudioModalIsOpen(false)
-  }
-
-  const handleOpenAudioModal = () => {
-    setAudioModalIsOpen(true)
-  }
-
-  const handleMouseDown = () => {
-    setOpenModel1(true)
-  }
-
-  const handleMouseUp = () => {
-    setOpenModel1(false)
-  }
+  const [step, setStep] = useState(2)
+  const [currentQuestion, setCurrentQuestion] = useState <IQuestion> ()
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSend = () => {
+    setIsLoading(true)
     const temp = msg
     setInputMessage(JSON.stringify(msg))
-    setMsg('')
+    // setMsg('')
+
     // 将api_url替换为你的API接口地址
     const api_url = 'http://127.0.0.1:8000/chat'
 
     const testData = { prompt: temp }
-
     // 发送POST请求
     fetch(api_url, {
       method: 'POST',
@@ -64,35 +54,41 @@ function ContentProvider({ children }: Props) {
     })
       .then(response => response.json())
       .then((data) => {
+        setIsLoading(false)
         // 处理响应数据
         console.log(data)
         setOutputMessage(JSON.stringify(data.text))
       })
       .catch((error) => {
+        // setIsLoading(false)
         console.error(error)
       })
   }
 
+  const handleStep2 = (item?: IQuestion) => {
+    setStep(1)
+    setCurrentQuestion(item)
+  }
+
   return (
-    <ContentContext.Provider
-      value={{
-        isAudioModalOpen,
-        inputMessage,
-        setInputMessage,
-        outputMessage,
-        setOutputMessage,
-        openModel1,
-        msg,
-        setMsg,
-        handleMouseDown,
-        handleMouseUp,
-        handleCancelAudioModal,
-        handleOpenAudioModal,
-        handleSend,
-      }}
-    >
-      {children}
-    </ContentContext.Provider>
+  <ContentContext.Provider
+    value={{
+      inputMessage,
+      setInputMessage,
+      outputMessage,
+      setOutputMessage,
+      msg,
+      setMsg,
+      step,
+      setStep,
+      handleSend,
+      currentQuestion,
+      handleStep2,
+      isLoading,
+    }}
+  >
+    {children}
+  </ContentContext.Provider>
   )
 }
 

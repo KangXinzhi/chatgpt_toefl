@@ -1,0 +1,50 @@
+.container{
+  color: #fff;
+}
+
+.card{
+  box-sizing: border-box;
+}
+
+.cardItem {
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  height: 200px;
+  padding: 8px;
+  position: relative;
+}
+
+.background{
+  background: url("../../../../assets/toefl.png");
+  background-size: cover; /* 使背景图片填满容器 */
+  border-radius: 12px;
+  height: 100%;
+  left: 0;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.title{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  height: 100%;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+  &:hover{
+    background: url("../../../../assets/toefl.png");
+    background-size: cover; /* 使背景图片填满容器 */
+    border-radius: 12px;
+  }
+}

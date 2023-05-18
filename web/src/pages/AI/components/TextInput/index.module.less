@@ -1,21 +1,34 @@
-.containerOut {
-  margin: 0 auto;
-  margin-bottom: 40px;
-  position: relative;
-  width: 768px;
+.container{
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 40px);
+  justify-content:center;
+  padding:0 50px;
 }
 
-.container {
+.intro{
+  margin-bottom: 40px;  
+
+  li {
+    margin-left: 20px;
+  }
+}
+
+.textOut {
+  position: relative;
+}
+
+.text {
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
   display: flex;
-  max-height: 200px;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 4px;
   position: relative;
-  width: 100%;
 }
 
 
