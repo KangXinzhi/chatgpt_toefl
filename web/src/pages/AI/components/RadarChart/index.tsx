@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import * as echarts from 'echarts'
 
+import type { IScore } from '../ContentProvider/ContentProvider'
 import styles from './index.module.less'
 
-function RadarChart() {
+function RadarChart(props: { score: IScore }) {
   const chartRef = useRef(null)
 
   useEffect(() => {
@@ -16,10 +17,10 @@ function RadarChart() {
       radar: {
         indicator: [
           { name: '论点清晰度', max: 100 },
-          { name: '组织结构', max: 100 },
           { name: '支持材料', max: 100 },
           { name: '语法和词汇', max: 100 },
           { name: '思维逻辑', max: 100 },
+          { name: '组织结构', max: 100 },
         ],
         radius: '65%',
         center: ['50%', '50%'],
@@ -66,12 +67,12 @@ function RadarChart() {
           },
           data: [{
             name: '评测得分',
-            value: [80, 50, 70, 60, 90],
+            value: [props.score['论点清晰度'], props.score['支持材料'], props.score['语法和词汇'], props.score['思维逻辑'], props.score['组织结构']],
             label: {
               color: '#fff',
               show: true,
               formatter: (params: { value: any }) => {
-                return params.value
+                return +params.value
               },
             },
           }],

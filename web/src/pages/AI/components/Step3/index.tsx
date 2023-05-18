@@ -8,7 +8,7 @@ import styles from './index.module.less'
 import './customTable.css'
 
 function Step() {
-  const { msg, setMsg, currentQuestion } = useContent()
+  const { msg, setMsg, currentQuestion, outputMessage } = useContent()
   const columns = [
     {
       title: '评分项目',
@@ -108,18 +108,20 @@ function Step() {
           bordered
         />
       </div>
+      {outputMessage && outputMessage.score && outputMessage.evidence && outputMessage.suggest &&(
       <div>
-        <h2>最终得分：</h2>
-        <RadarChart />
+        <div>
+          <h2>最终得分：</h2>
+          <RadarChart score={outputMessage.score}/>
+        </div>
+        <div>
+          <h2>判断依据：{outputMessage.evidence}</h2>
+        </div>
+        <div>
+          <h2>意见建议：{outputMessage.suggest}</h2>
+        </div>
       </div>
-      <div>
-        <h2>判断依据：</h2>
-      </div>
-      <div>
-        <h2>意见建议：</h2>
-
-      </div>
-
+      )}
     </div>
   )
 }

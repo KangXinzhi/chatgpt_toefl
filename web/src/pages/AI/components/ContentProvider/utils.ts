@@ -1,4 +1,4 @@
-function extractOuterObject(jsonString: string) {
+export function extractOuterObject(jsonString: string) {
   const stack = []
   let start = -1
   let result = ''

@@ -10,11 +10,25 @@ interface IQuestion {
   title: string
   type: string
 }
+
+export interface IScore {
+  '论点清晰度': string
+  '支持材料': string
+  '语法和词汇': string
+  '思维逻辑': string
+  '组织结构': string
+}
+
+interface IAnswer {
+  score: IScore
+  evidence: string
+  suggest: string
+}
+
 export interface Context {
   inputMessage: string
   setInputMessage: (inputMessage: string) => void
-  outputMessage: string
-  setOutputMessage: (outputMessage: string) => void
+  outputMessage: IAnswer | null
   msg: string
   setMsg: (msg: string) => void
   step: number
@@ -29,7 +43,7 @@ export const ContentContext = React.createContext<Context>({} as Context)
 
 function ContentProvider({ children }: Props) {
   const [inputMessage, setInputMessage] = useState('')
-  const [outputMessage, setOutputMessage] = useState('')
+  const [outputMessage, setOutputMessage] = useState<IAnswer | null>(null)
   const [msg, setMsg] = useState('')
   const [step, setStep] = useState(0)
   const [currentQuestion, setCurrentQuestion] = useState <IQuestion> ()
@@ -55,8 +69,7 @@ function ContentProvider({ children }: Props) {
         setIsLoading(false)
         // 处理响应数据
         console.log(data.text)
-        setOutputMessage(extractOuterObject(data.text))
-
+        setOutputMessage(extractOuterObject(data.text) as unknown as IAnswer)
         setStep(2)
       })
       .catch((error) => {
@@ -76,7 +89,6 @@ function ContentProvider({ children }: Props) {
       inputMessage,
       setInputMessage,
       outputMessage,
-      setOutputMessage,
       msg,
       setMsg,
       step,
