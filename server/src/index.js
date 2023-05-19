@@ -1,8 +1,5 @@
 // 引入依赖模块
 import express from 'express';
-import fs from 'fs';
-import multer from 'multer';
-import { v4 as uuidv4 } from 'uuid';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
