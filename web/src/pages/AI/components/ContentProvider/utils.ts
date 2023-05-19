@@ -19,5 +19,5 @@ export function extractOuterObject(jsonString: string) {
     }
   }
 
-  return result
+  return JSON.parse(result)
 }

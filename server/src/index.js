@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // 解析urlencoded格式的
 // 请求数据
 app.post('/chat', async (req, res) => {
   const { topic, answer } = req.body; // 获取请求体中的data字段
-  console.log(topic,answer)
+  console.log(topic,answer);
 
   if (!topic || !answer) return;
   const response = await chatLangChain(topic, answer); // 处理数据
@@ -29,7 +29,7 @@ app.post('/chat', async (req, res) => {
 });
 
 // 启动应用程序
-const port = 8002;
+const port = 8000;
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

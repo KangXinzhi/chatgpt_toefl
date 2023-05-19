@@ -5,9 +5,9 @@ import logo from '../../assets/logo.png'
 import user1Avatar from '../../assets/user1.jpg'
 import user2Avatar from '../../assets/user2.jpg'
 import user3Avatar from '../../assets/user3.jpg'
-import productImage1 from '../../assets/user3.jpg'
-import productImage2 from '../../assets/user3.jpg'
-import productImage3 from '../../assets/user3.jpg'
+import feature1 from '../../assets/feature1.png'
+import feature2 from '../../assets/feature2.png'
+import feature3 from '../../assets/feature3.png'
 
 import styles from './index.module.less'
 
@@ -64,19 +64,19 @@ function App() {
           <h2>产品介绍</h2>
           <div className={styles.Features}>
             <div className={styles.Feature}>
-              <img src={productImage1} alt="Product 1" className={styles.productImage} />
+              <img src={feature1} alt="Product 1" className={styles.productImage} />
               <h3>准确评分</h3>
               <p>我们的AI模型会根据托福写作评分标准进行准确打分，帮助您了解您的写作水平。</p>
             </div>
             <div className={styles.Feature}>
-              <img src={productImage2} alt="Product 2" className={styles.productImage} />
-              <h3>详细报告</h3>
-              <p>我们将为您生成详细的评估报告，包括分数、错误指导和个性化的写作建议。</p>
+              <img src={feature2} alt="Product 2" className={styles.productImage} />
+              <h3>丰富题库</h3>
+              <p>我们都为您提供了多样化的题目选择。这样您可以针对不同题型和话题进行练习，提高您的写作技巧和应试能力。</p>
             </div>
             <div className={styles.Feature}>
-              <img src={productImage3} alt="Product 3" className={styles.productImage} />
-              <h3>历史记录</h3>
-              <p>您可以随时回顾和跟踪您的写作历史记录，了解您的进步和发展。</p>
+              <img src={feature3} alt="Product 3" className={styles.productImage} />
+              <h3>详细报告</h3>
+              <p>我们将为您生成详细的评估报告，包括分数、错误指导和个性化的写作建议。</p>
             </div>
           </div>
         </div>

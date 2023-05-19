@@ -34,10 +34,10 @@ export const chatLangChain = async (topic, answer) => {
       `
       ),
     new AIChatMessage('还有什么需要注意的地方么？'),
-    new HumanChatMessage(`打分一定要严格，按照上面的标准打分，如果和题目不符直接打低分`),
-    new AIChatMessage('好的没问题，我会严格打分，请给我发送材料和学生的回答，我将按照您的要求返回json给您'),
+    new HumanChatMessage(`打分一定要严格，如果和题目不符直接打0分，强调下必须返回一个JSON给我，如果不符合题意就JSON中打0分`),
+    new AIChatMessage('好的没问题，我会严格打分，不管任何语境必定返回一个JSON给您，请提供给我学生的回答'),
     new HumanChatMessage(`学生的回答是：${answer}`)
   ]);
 
   return finalRes;
-}
+};

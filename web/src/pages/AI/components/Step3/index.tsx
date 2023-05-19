@@ -108,17 +108,18 @@ function Step() {
           bordered
         />
       </div>
-      {outputMessage && outputMessage.score && outputMessage.evidence && outputMessage.suggest &&(
+      {outputMessage && outputMessage.score && outputMessage.evidence && outputMessage.suggest && (
       <div>
         <div>
-          <h2>最终得分：</h2>
+          <h2>最终得分：{Math.floor(0.3 * (((+outputMessage.score['论点清晰度']) * 0.3) + ((+outputMessage.score['支持材料']) * 0.3) + ((+outputMessage.score['语法和词汇']) * 0.2) + ((+outputMessage.score['思维逻辑']) * 0.1) + ((+outputMessage.score['组织结构']) * 0.1)))}分</h2>
+          <h3>(打分标准:  满分30 * (论点清晰度得分*30% + 支持材料*30% + 语法和词汇*20% + 思维逻辑*10% + 思维逻辑*10%))</h3>
           <RadarChart score={outputMessage.score}/>
         </div>
         <div>
-          <h2>判断依据：{outputMessage.evidence}</h2>
+          <h2>判断依据：</h2>{outputMessage.evidence}
         </div>
         <div>
-          <h2>意见建议：{outputMessage.suggest}</h2>
+          <h2>意见建议：</h2>{outputMessage.suggest}
         </div>
       </div>
       )}
